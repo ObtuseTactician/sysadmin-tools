@@ -15,7 +15,7 @@ ForEach ($Customer in $mspCustomers) {
     $j = 0
     foreach ($user in $Users) {
         $j++
-        Write-Progress -Id 1 -Activity "Found $($Users.Count) in $($Customer.Name). Exporting $($user.DisplayName)" -status "Updated: $j of $y" -PercentComplete (($i / $x) * 100)
+        Write-Progress -Id 1 -Activity "Found $($Users.Count) in $($Customer.Name). Exporting $($user.DisplayName)" -status "Updated: $j of $y" -PercentComplete (($j / $y) * 100)
         $LicenseStatus = $user.IsLicensed
         $userProperties = @{
             CompanyName   = $Customer.Name
