@@ -16,13 +16,12 @@ ForEach ($Customer in $mspCustomers) {
     foreach ($user in $Users) {
         $j++
         Write-Progress -Id 1 -Activity "Found $($Users.Count) in $($Customer.Name). Exporting $($user.DisplayName)" -status "Updated: $j of $y" -PercentComplete (($j / $y) * 100)
-        $LicenseStatus = $user.IsLicensed
         $userProperties = @{
             CompanyName   = $Customer.Name
             PrimaryDomain = $Customer.DefaultDomainName
             DisplayName   = $user.DisplayName
             EmailAddress  = $user.UserPrincipalName
-            IsLicensed    = $LicenseStatus
+            IsLicensed    = $user.IsLicensed
         }
         $msolUsers += New-Object psobject -Property $userProperties
     }
